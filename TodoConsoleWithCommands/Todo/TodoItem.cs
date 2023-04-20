@@ -15,6 +15,12 @@
             Deadline = deadline;
         }
 
+        //public TodoItem(string text, int daysToDeadLine)
+        //{
+        //    Text = text;
+        //    Deadline = DateTime.Now.AddDays(daysToDeadLine);
+        //}
+
         public TodoItem(string text, int daysToDeadLine)
         : this(text, DateTime.Now.AddDays(daysToDeadLine))
         {

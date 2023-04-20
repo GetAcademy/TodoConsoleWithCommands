@@ -35,7 +35,6 @@ namespace TodoConsoleWithCommands.Todo
                 var todoItem = _todoItems[index];
                 txt.AppendLine($"{index + 1}: {todoItem.AsText}");
             }
-
             return txt.ToString();
         }
     }
