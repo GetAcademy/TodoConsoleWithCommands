@@ -1,7 +1,5 @@
 ﻿/*
  *
- * Pause til 10:52
- *
  * Nytt eksempel på objektorientering - og hva som kan være en klasse
  * Nytt eksempel interface
  * Reflection
@@ -11,6 +9,7 @@ using TodoConsoleWithCommands;
 using TodoConsoleWithCommands.Todo;
 
 //TodoConsole.RunWithoutCommands();
+TodoConsole.RunWithCommands();
 
 
 // DRY = Don't Repeat Yourself

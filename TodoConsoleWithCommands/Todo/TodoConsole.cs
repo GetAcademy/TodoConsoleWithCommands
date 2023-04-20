@@ -1,7 +1,52 @@
-﻿namespace TodoConsoleWithCommands.Todo
+﻿using System.Reflection;
+
+namespace TodoConsoleWithCommands.Todo
 {
     internal class TodoConsole
     {
+        public static void RunWithCommands()
+        {
+            var todoList = new TodoList();
+
+            //var commands = new ICommand[]
+            //{
+            //    new AddTodoCommand(todoList),
+            //    new DeleteTodoCommand(todoList),
+            //    new SetTodoAsDoneCommand(todoList),
+            //};
+
+            //var type = typeof(TodoItem);
+            var iCommandType = typeof(ICommand);
+
+            var allTypes = Assembly.GetExecutingAssembly().GetTypes();
+            var commandTypes = allTypes.Where(t => t.IsAssignableTo(iCommandType) && t != iCommandType).ToArray();
+            var commands = new List<ICommand>();
+            foreach (var commandType in commandTypes)
+            {
+                var instance = (ICommand)Activator.CreateInstance(commandType, new object[]{todoList});
+                commands.Add(instance);
+            }
+
+
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Todo:");
+                Console.WriteLine(todoList.ListAsText());
+                Console.WriteLine("Kommandoer");
+                for (var index = 0; index < commands.Count; index++)
+                {
+                    var command = commands[index];
+                    var commandNo = index + 1;
+                    Console.WriteLine($"{commandNo}: {command.MenuText}");
+                }
+                var selectedCommandNo = Console.ReadLine();
+                var selectedCommandIndex = Convert.ToInt32(selectedCommandNo) - 1;
+                commands[selectedCommandIndex].Run();
+            }
+        }
+
+
         public static void RunWithoutCommands()
         {
             var todoList = new TodoList();
@@ -46,5 +91,8 @@
                 }
             }
         }
+
+
+
     }
 }
