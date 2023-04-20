@@ -21,11 +21,11 @@
                 {
                     Console.WriteLine("Legg til");
                     Console.Write("Hvor mange dager til fristen? ");
-                    var deadlineDaysStr = Console.ReadLine();
-                    var deadlineDays = Convert.ToInt32(deadlineDaysStr);
+                    var daysToDeadlineStr = Console.ReadLine();
+                    var daysToDeadLine = Convert.ToInt32(daysToDeadlineStr);
                     Console.Write("Hva skal gjøres? ");
                     var text = Console.ReadLine();
-                    var todoItem = new TodoItem(text, DateTime.Now.AddDays(deadlineDays));
+                    var todoItem = new TodoItem(text, daysToDeadLine);
                     todoList.Add(todoItem);
                 }
                 else if (cmd == "2")

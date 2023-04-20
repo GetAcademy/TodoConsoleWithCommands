@@ -33,7 +33,7 @@ namespace TodoConsoleWithCommands.Todo
             for (var index = 0; index < _todoItems.Count; index++)
             {
                 var todoItem = _todoItems[index];
-                txt.AppendLine($"{index + 1}: {todoItem.AsText()}");
+                txt.AppendLine($"{index + 1}: {todoItem.AsText}");
             }
 
             return txt.ToString();
