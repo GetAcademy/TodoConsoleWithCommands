@@ -37,5 +37,8 @@ namespace TodoConsoleWithCommands.Todo
             }
             return txt.ToString();
         }
+
+        // string s = a + "-"
+        // string s = $"{a}-"
     }
 }
